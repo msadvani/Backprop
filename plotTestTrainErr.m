@@ -6,14 +6,14 @@ close all;
 
 
 %% Parameters to vary
-dataDim=20;
+dataDim=8;
 numTrainEx =20;
 numTestEx = 300;
-numLayers=4;
+numLayers=3;
 
-Tavg=250;
-numIter = 1000;
-stepSz=.01;
+Tavg=100;
+numIter = 500;
+stepSz=.025;
 
  
  
@@ -24,7 +24,7 @@ seed=randi(5000);
 M=dataDim;
 N= numLayers;
 
-rng(5)
+%rng(5)
 %Init one possible correct set of weights
 Wsoln = (1/sqrt(M))*randn(M,M,N-1);
 input = randn(dataDim,numTrainEx);
@@ -75,7 +75,7 @@ hold on;
 plot([1:numIter],errBP);
 plot([1:numIter],errLocBP,'r--');
 
-title(['Test Err w/ ',num2str(numTestEx),' Examp, ',num2str(Tavg),' Tavg, and ',num2str(stepSz),' step size', num2str(N),' layers', num3str(M),' dims']);
+title(['Test Err w/ ',num2str(numTestEx),' Examp, ',num2str(Tavg),' Tavg, and ',num2str(stepSz),' step size, ', num2str(N),' layers, ', num2str(M),' dims']);
 ylabel('Error')
 xlabel('Iteration')
 legend('bp','bp local')
